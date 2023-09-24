@@ -1,2 +1,2 @@
-# IC-TSDV-Algebra--IgnacioGonzaezSouza--TPN-1
-Ignacio Gonzalez Souza
+# IC-TSDV-Algebra--Juan Bautista Castignani--TPN-1
+Juan Bautista Castignani
