@@ -65,13 +65,13 @@ int main(void)
 
         if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT) && !poligonClosed) //agrego la pos del mouse y se toca el boton iz
         {
-            //Mouse.push_back(GetMousePosition()); 
-            if (Mouse.size() > 1 && pitagoras(Mouse[0], GetMousePosition()) < 50)
+            
+            if (Mouse.size() > 1 && pitagoras(Mouse[0], GetMousePosition()) < 50) // si un punto eta muy cerca del primero los junta
             {
                 Mouse.push_back(Mouse[0]);
                 poligonClosed = true;
             }
-            else
+            else // agrega la pos del mouse al final del vector
             {
                 Mouse.push_back(GetMousePosition());
             }
@@ -83,7 +83,7 @@ int main(void)
         }
 
         if (colLineLine(right, Mouse) % 2 != 0 && colLineLine(left, Mouse) % 2 != 0 && colLineLine(bot, Mouse) % 2 != 0
-            && colLineLine(top, Mouse) % 2 != 0 && poligonClosed) //si en todas las dirc las lineas se cortan existe colicion
+            && colLineLine(top, Mouse) % 2 != 0 && poligonClosed) //si en todas las dirc las lineas se cortan una cantidad impar de veces existe colicion y el poligono esta cerrado
         {
             ballColor = BLUE;
         }
@@ -182,7 +182,7 @@ void ballMovement(float& ballX, float& ballY, int speed, float radius)// movimie
 
 
 //http://www.jeffreythompson.org/collision-detection/line-line.php
-//calcula si las lineas se cortan
+//calcula si las lineas se cortan y cuantas veces
 int colLineLine(line line, vector<Vector2> vector)
 {
     float a;
@@ -212,7 +212,7 @@ int colLineLine(line line, vector<Vector2> vector)
     }
 }
 
-float pitagoras(Vector2 p1, Vector2 p2)
+float pitagoras(Vector2 p1, Vector2 p2)// calcula hipotenusa
 {
     return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
 }
